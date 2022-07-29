@@ -4,7 +4,6 @@ use App\Models\Post;
 use Faker\Core\File;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
-use Illuminate\Support\Facades\File as File2;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,17 +24,8 @@ Route::get('/', function () {
 
 Route::get('posts/{post}', function ($slug) {
     return view('post', [
-        'post' => Post::find($slug)
-
+        'post' => Post::findOrFail($slug)
     ]);
-})->where('post', '[A-z_\-]+');
-
-
-
-Route::get('/test', function () {
-    return $collection = collect(['taylor', 'abigail', null])->map(function ($name) {
-        return strtoupper($name);
-    })->reject(function ($name) {
-        return empty($name);
-    });
 });
+
+
