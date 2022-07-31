@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    protected $guarded = []; // all columns allow mass assigne
+    // protected $fillable = ['title', 'excerpt','body'];
 }
