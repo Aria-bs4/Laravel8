@@ -8,12 +8,6 @@
         </article>
         <a href="/">Go Back</a>
 
-        <x-button>
-            <x-slot name="name">
-                test button
-            </x-slot>
-        </x-button>
-        
     </x-slot>
 
     <x-slot name="title">

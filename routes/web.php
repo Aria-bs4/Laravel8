@@ -18,13 +18,17 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
     return view('posts', [
-        'posts' => Post::all()
+        'posts' => Post::join('users', 'users.id', '=', 'posts.author')
+                ->get(['users.name', 'posts.*'])
     ]);
 });
 
 Route::get('posts/{post}', function ($id) {
     return view('post', [
-        'post' => Post::findOrFail($id)
+        'post' => Post::join('users', 'users.id', '=', 'posts.author')
+            ->where('posts.id',$id)
+            ->get(['users.name', 'posts.*'])
+            ->first()
     ]);
 });
 

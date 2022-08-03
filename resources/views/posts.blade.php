@@ -10,6 +10,7 @@
             </h1>
 
             <div>{{ $post->excerpt }}</div>
+            <p>written by: {{ $post->name }}</p>
         </article>
         @endforeach
     </x-slot>
