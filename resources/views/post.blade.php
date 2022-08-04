@@ -6,6 +6,11 @@
                 {!! $post->body !!}
             </div>
         </article>
+
+        <p>
+            <a href='#'>{{ $post->category->name }}</a>
+        </p>
+
         <a href="/">Go Back</a>
 
         <x-button>
