@@ -19,7 +19,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
     return view('posts', [
-        'posts' => Post::with(['category' => fn($query) => $query->where('id','>',0)])->get()
+        'posts' => Post::with(['category' => fn($query) => $query->where('id','>',0), 'user'])->get()
     ]);
 });
 
