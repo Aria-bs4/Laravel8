@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Post;
 use App\Models\Category;
 use Faker\Core\File;
@@ -19,7 +20,7 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
     return view('posts', [
-        'posts' => Post::with(['category' => fn($query) => $query->where('id','>',0), 'user'])->get()
+        'posts' => Post::with(['category' => fn($query) => $query->where('id','>',0), 'author'])->latest()->get()
     ]);
 });
 
@@ -32,6 +33,12 @@ Route::get('posts/{post:slug}', function (Post $post) {
 Route::get('categories/{category:slug}', function (Category $category){
     return view('posts', [
         'posts' => $category->posts
+    ]);
+});
+
+Route::get('authors/{author:username}', function (User $author){
+    return view('posts', [
+        'posts' => $author->posts->load(['author', 'category'])
     ]);
 });
 
