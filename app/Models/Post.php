@@ -12,6 +12,8 @@ class Post extends Model
     protected $guarded = []; // all columns allow mass assigne
     // protected $fillable = ['title', 'excerpt','body'];
 
+    protected $with = ['author', 'category'];
+
     // public function getRouteKeyName()
     // {
     //     return 'slug';
