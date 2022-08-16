@@ -19,6 +19,13 @@ class Post extends Model
     //     return 'slug';
     // }
 
+    public function scopeFilter($query, $filter) {
+        $query->when($filter['search'] ?? false, fn ($query, $search) =>
+            $query
+                ->where('title', 'like', '%'.$search.'%')
+                ->orwhere('body', 'like', '%'.$search.'%'));
+    }
+
     public function category(){
         return $this->belongsTo(Category::class);
     }
