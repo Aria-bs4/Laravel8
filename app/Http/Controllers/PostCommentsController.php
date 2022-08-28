@@ -18,6 +18,6 @@ class PostCommentsController extends Controller
             'body'      => request('body')
         ]);
 
-        return back();
+        return back()->with('success', 'Thanks for your comment.');
     }
 }
