@@ -3,7 +3,7 @@
 <x-panel class="bg-gray-50">
     <article class="flex space-x-4">
         <div class="flex-shrink-0">
-            <img src='https://i.pravatar.cc/60?u={{ $comment->id }}' width="60" height="60" class="rounded-xl">
+            <img src='https://i.pravatar.cc/60?u={{ $comment->user_id }}' width="60" height="60" class="rounded-xl">
         </div>
 
         <div>
@@ -11,7 +11,7 @@
                 <h3>{{ $comment->author->username }}</h3>
                 <p class="text-xs">
                     posted
-                    <time>{{ $comment->created_at }}</time>
+                    <time>{{ $comment->created_at->format('F j, Y, g:i a') }}</time>
                 </p>
             </header>
             {{ $comment->body }}
