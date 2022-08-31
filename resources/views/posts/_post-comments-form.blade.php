@@ -19,7 +19,9 @@
                 @enderror
             </div>
 
-            <x-submit-button>Post</x-submit-button>
+            <div class="flex justify-end mt-6 pt-6 border-t border-gray-200">
+                <x-submit-button>Post</x-submit-button>
+            </div>
 
         </form>
     </x-panel>
